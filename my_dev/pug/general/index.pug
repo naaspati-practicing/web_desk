@@ -1,8 +1,28 @@
-extends ./boilerplate/skeleton.pug
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title Clip-path based Menu Concept - JS and SCSS
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Arvo: 400, 700'>
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css'>
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Kaushan+Script'>
 
-block head
-  title hello world 
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/index.js" defer></script>
 
-block body
-  h1 hello world 1
-  
+  body
+    #canvas
+      .menu
+        i.fa.fa-bars.open
+        ul
+          each val in ['About', 'Showcase', 'Blog']
+            li: span(data-view=val)=val
+      section
+        each val in ['Clip-path based Menu Concept', 'So awesome', 'it makes you Cry'] 
+          .screen: h1=val
+          
+        
+            
+          
