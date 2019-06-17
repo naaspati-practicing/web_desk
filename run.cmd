@@ -5,6 +5,9 @@ if "%1"=="" (
  echo no command specified
  goto:help
 )
+
+if %1==commit goto:git
+
 if %1==yarn (
  copy package.json  .myfiles\backup\package-1.json
  copy yarn.lock  .myfiles\backup\yarn-1.lock
@@ -46,4 +49,16 @@ echo unknown command: %*
 echo usage  
  echo     s    run live-server
  
- 
+ goto:eof
+
+:git
+git add -A
+git status
+
+set MSG=
+set /P MSG=git commit message: 
+if "%MSG%"=="" (
+  set MSG=modified
+)
+git commit -m "%MSG%"
+
