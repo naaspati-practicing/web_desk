@@ -1,4 +1,4 @@
-module.exports = [
+const modules = [
 // 'postcss-comment', // https://www.npmjs.com/package/postcss-comment
 // 'postcss-for', // https://github.com/antyakushev/postcss-for
 // 'postcss-each' // https://github.com/outpunk/postcss-each
@@ -16,4 +16,36 @@ module.exports = [
 // 'postcss-css-reset', // https://www.npmjs.com/package/postcss-css-reset
 'autoprefixer'
 ];
+
+const { resolve } = require( 'path' );
+
+function postcss_icon( data ) {
+    /**
+     * const output = {
+        path: resolve( process.cwd(), data.config.css_dest, 'postcss-icons' ),
+        formats: ['woff2', 'woff'],
+        url( { cssFile, fontName, hash } ) {return `postcss-icons/${fontName}`;}
+    };
+     */
+    return {
+        'postcss-icon.font-awesome-v4': {
+            prefix: 'fa-', /* required when using multiple Icon data sets */
+            output: {
+                inline: ['woff2'],
+                path: resolve( process.cwd(), data.config.css_dest, 'postcss-icons' ),
+                formats: ['woff2', 'woff'],
+                url( { cssFile, fontName, hash } ) {return `postcss-icons/${fontName}`;}
+            }
+
+        }
+    };
+}
+
+const configs = {
+    // "autoprefixer": { browserslist: ['last 1 versions'] },
+    'postcss-utilities': { centerMethod: 'flexbox' },
+    'postcss-icon': postcss_icon
+};
+
+exports.exports = {modules, configs};
 
