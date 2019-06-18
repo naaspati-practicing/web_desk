@@ -47,5 +47,5 @@ const configs = {
     'postcss-icon': postcss_icon
 };
 
-exports.exports = {modules, configs};
+module.exports = {modules, configs};
 
